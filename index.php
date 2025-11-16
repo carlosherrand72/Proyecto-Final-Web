@@ -12,7 +12,7 @@ $categorias = $conn->query($sql);
 <html lang="es">
 <head>
   <title>Hardware Store - Inicio</title>
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/estilos.css">
   <script src="jquery-3.7.1.min.js"></script>
 </head>
 <body>
@@ -44,12 +44,24 @@ $categorias = $conn->query($sql);
   </nav>
 
   <main>
-    <?php while ($categoria = $categorias->fetch_assoc()): ?>
+    <?php 
+    // Mapeo de categorías a imágenes genéricas
+    $imagenes_categorias = [
+        1 => 'teclado.png',
+        2 => 'mouse.png',
+        3 => 'monitor.png',
+        4 => 'audifonos.png',
+        5 => 'gpu.png',
+        6 => 'ram.png'
+    ];
+    
+    while ($categoria = $categorias->fetch_assoc()): 
+        $imagen = $imagenes_categorias[$categoria['id']] ?? 'default.png';
+    ?>
     <div class="product-card">
       <div class="product-image">
-        <img src="Images/<?php echo $categoria['imagen']; ?>" 
-             alt="<?php echo $categoria['nombre']; ?>"
-             onerror="this.src='https://via.placeholder.com/300x300/3498db/ffffff?text=<?php echo urlencode($categoria['nombre']); ?>'">
+        <img src="Images/<?php echo $imagen; ?>" 
+             alt="<?php echo $categoria['nombre']; ?>">
       </div>
       <div class="product-content">
         <button class="btn-ver-mas" onclick="window.location.href='productos.php?categoria=<?php echo $categoria['id']; ?>'">
@@ -72,7 +84,7 @@ $categorias = $conn->query($sql);
   <script>
     function logout() {
       if (confirm('¿Desea cerrar sesión?')) {
-        window.location.href = 'api/logout.php';
+        window.location.href = 'logout.php';
       }
     }
   </script>

@@ -3,6 +3,11 @@ require_once 'config/db.php';
 
 $conn = getConnection();
 
+// Obtener mensajes de sesión
+$error = $_SESSION['error'] ?? '';
+$success = $_SESSION['success'] ?? '';
+unset($_SESSION['error'], $_SESSION['success']);
+
 // Obtener categorías
 $sql = "SELECT * FROM categorias ORDER BY id";
 $categorias = $conn->query($sql);
@@ -13,7 +18,6 @@ $categorias = $conn->query($sql);
 <head>
   <title>Hardware Store - Inicio</title>
   <link rel="stylesheet" href="css/estilos.css">
-  <script src="jquery-3.7.1.min.js"></script>
 </head>
 <body>
   <header>
@@ -40,8 +44,22 @@ $categorias = $conn->query($sql);
       <li><a href="productos.php?categoria=4">Audífonos</a></li>
       <li><a href="productos.php?categoria=5">GPUs</a></li>
       <li><a href="productos.php?categoria=6">RAM</a></li>
+      <?php if (isLoggedIn() && !isAdmin()): ?>
+        <li><a href="carrito.php" class="carrito-link">🛒 Carrito (<?php echo isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0; ?>)</a></li>
+      <?php endif; ?>
     </ul>
   </nav>
+
+  <div class="container-main">
+    <!-- Mensajes -->
+    <?php if ($error): ?>
+      <div class="alert alert-error"><?php echo $error; ?></div>
+    <?php endif; ?>
+    
+    <?php if ($success): ?>
+      <div class="alert alert-success"><?php echo $success; ?></div>
+    <?php endif; ?>
+  </div>
 
   <main>
     <?php 

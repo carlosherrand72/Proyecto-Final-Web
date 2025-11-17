@@ -32,7 +32,7 @@ $productos = $conn->query($sql_prod);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $categoria['nombre']; ?> - Hardware Store</title>
-    <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/productos.css">
 </head>
 <body>
@@ -62,6 +62,9 @@ $productos = $conn->query($sql_prod);
             <li><a href="productos.php?categoria=4">Audífonos</a></li>
             <li><a href="productos.php?categoria=5">GPUs</a></li>
             <li><a href="productos.php?categoria=6">RAM</a></li>
+            <?php if (isLoggedIn() && !isAdmin()): ?>
+                <li><a href="carrito.php" class="carrito-link">🛒 Carrito (<?php echo isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0; ?>)</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
 
@@ -167,7 +170,12 @@ $productos = $conn->query($sql_prod);
                                 Eliminar
                             </button>
                         <?php else: ?>
-                            <button class="btn-agregar-carrito">Agregar al Carrito</button>
+                            <form method="POST" action="procesar_carrito.php" style="width: 100%;">
+                                <input type="hidden" name="action" value="agregar">
+                                <input type="hidden" name="id_producto" value="<?php echo $producto['id']; ?>">
+                                <input type="hidden" name="categoria" value="<?php echo $id_categoria; ?>">
+                                <button type="submit" class="btn-agregar-carrito">Agregar al Carrito 🛒</button>
+                            </form>
                         <?php endif; ?>
                     </div>
                 </div>

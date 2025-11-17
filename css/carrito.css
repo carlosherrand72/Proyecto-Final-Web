@@ -1,0 +1,238 @@
+/* Carrito Vacío */
+.carrito-vacio {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.carrito-vacio p {
+    font-size: 24px;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+/* Contenido del Carrito */
+.carrito-contenido {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Items del Carrito */
+.carrito-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.carrito-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 100px 1fr auto auto auto;
+    gap: 20px;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.carrito-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #ecf0f1;
+}
+
+.item-info h3 {
+    color: #2c3e50;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.item-precio {
+    color: #27ae60;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.item-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-cantidad {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-cantidad:hover {
+    background-color: #2980b9;
+}
+
+.cantidad {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    min-width: 30px;
+    text-align: center;
+}
+
+.item-subtotal p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.btn-eliminar-item {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.btn-eliminar-item:hover {
+    background-color: #c0392b;
+}
+
+/* Resumen del Carrito */
+.carrito-resumen {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.carrito-resumen h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.resumen-linea {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #7f8c8d;
+    font-size: 16px;
+}
+
+.carrito-resumen hr {
+    border: none;
+    border-top: 2px solid #ecf0f1;
+    margin: 20px 0;
+}
+
+.resumen-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.btn-finalizar {
+    width: 100%;
+    background-color: #27ae60;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+}
+
+.btn-finalizar:hover {
+    background-color: #229954;
+}
+
+.btn-continuar {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #3498db;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-continuar:hover {
+    background-color: #2980b9;
+}
+
+.btn-vaciar {
+    width: 100%;
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-vaciar:hover {
+    background-color: #c0392b;
+}
+
+/* Link del carrito en nav */
+.carrito-link {
+    font-weight: bold;
+    background-color: rgba(52, 152, 219, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .carrito-contenido {
+        grid-template-columns: 1fr;
+    }
+    
+    .carrito-resumen {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .carrito-item {
+        grid-template-columns: 80px 1fr;
+        gap: 15px;
+    }
+    
+    .item-cantidad,
+    .item-subtotal {
+        grid-column: 2;
+    }
+    
+    .btn-eliminar-item {
+        grid-column: 2;
+        justify-self: end;
+    }
+}

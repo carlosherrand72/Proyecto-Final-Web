@@ -15,6 +15,10 @@ if (!isset($_SESSION['carrito'])) {
 
 $conn = getConnection();
 
+// Obtener categorías para sidebar
+$sql_categorias = "SELECT * FROM categorias ORDER BY nombre";
+$categorias_sidebar = $conn->query($sql_categorias);
+
 // Obtener mensajes
 $error = $_SESSION['error'] ?? '';
 $success = $_SESSION['success'] ?? '';
@@ -71,21 +75,45 @@ if (!empty($_SESSION['carrito'])) {
         </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.php">Inicio</a></li>
-            <li><a href="productos.php?categoria=1">Teclados</a></li>
-            <li><a href="productos.php?categoria=2">Mouse</a></li>
-            <li><a href="productos.php?categoria=3">Monitores</a></li>
-            <li><a href="productos.php?categoria=4">Audífonos</a></li>
-            <li><a href="productos.php?categoria=5">GPUs</a></li>
-            <li><a href="productos.php?categoria=6">RAM</a></li>
-            <li><a href="carrito.php" class="carrito-link">🛒 Carrito (<?php echo count($_SESSION['carrito']); ?>)</a></li>
-        </ul>
-    </nav>
+    <div class="container-principal">
+        <!-- Sidebar de Categorías -->
+        <aside class="sidebar">
+            <h2>Categorías</h2>
+            <ul class="categorias-list">
+                <li>
+                    <a href="index.php" class="categoria-item">
+                        <span class="icono">🏠</span>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <?php while ($cat = $categorias_sidebar->fetch_assoc()): ?>
+                <li>
+                    <a href="productos.php?categoria=<?php echo $cat['id']; ?>" class="categoria-item">
+                        <span class="icono">📦</span>
+                        <span><?php echo htmlspecialchars($cat['nombre']); ?></span>
+                        <span class="flecha">›</span>
+                    </a>
+                </li>
+                <?php endwhile; ?>
+            </ul>
+            
+            <div class="sidebar-usuario">
+                <hr>
+                <h3>Mi Cuenta</h3>
+                <a href="mis_pedidos.php" class="categoria-item">
+                    <span class="icono">📋</span>
+                    <span>Mis Pedidos</span>
+                </a>
+                <a href="carrito.php" class="categoria-item active">
+                    <span class="icono">🛒</span>
+                    <span>Carrito</span>
+                </a>
+            </div>
+        </aside>
 
-    <div class="container">
-        <h2 class="page-title">🛒 Mi Carrito de Compras</h2>
+        <!-- Contenido Principal -->
+        <div class="contenido-principal">
+            <h2 class="page-title">🛒 Mi Carrito de Compras</h2>
         
         <!-- Mensajes -->
         <?php if ($error): ?>
@@ -177,15 +205,36 @@ if (!empty($_SESSION['carrito'])) {
                     </form>
                 </div>
             </div>
-        <?php endif; ?>
+                    <?php endif; ?>
+        </div>
     </div>
 
     <footer>
-        <div class="footer-izquierda">
-            Carlos
-        </div>
-        <div class="footer-derecha">
-            <a href="#">Tarea</a>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section footer-about">
+                    <h3>Hardware Store</h3>
+                    <p>Tu tienda de confianza para componentes de hardware y accesorios tecnológicos.</p>
+                </div>
+                
+                <div class="footer-section footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.php">Inicio</a></li>
+                        <li><a href="mis_pedidos.php">Mis Pedidos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section footer-contact">
+                    <h3>Contáctanos</h3>
+                    <p><span>📞</span> +1 (809) 555-0100</p>
+                    <p><span>📧</span> info@hardwarestore.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hardware Store. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 </body>

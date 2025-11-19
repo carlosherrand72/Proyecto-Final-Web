@@ -1,0 +1,168 @@
+/* Sección de usuario en sidebar */
+.sidebar-usuario {
+    padding: 20px;
+}
+
+.sidebar-usuario hr {
+    margin-bottom: 15px;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.sidebar-usuario h3 {
+    color: #2c3e50;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+/* Sin pedidos */
+.sin-pedidos {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.sin-pedidos p {
+    font-size: 24px;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+.btn-comprar {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-comprar:hover {
+    background-color: #2980b9;
+}
+
+/* Lista de pedidos */
+.pedidos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Tarjeta de pedido */
+.pedido-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.pedido-header {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 20px;
+    padding: 20px 25px;
+    background-color: #ecf0f1;
+    border-bottom: 2px solid #3498db;
+    align-items: center;
+}
+
+.pedido-info h3 {
+    color: #2c3e50;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.pedido-fecha {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.pedido-total {
+    text-align: right;
+}
+
+.pedido-total .label {
+    display: block;
+    color: #7f8c8d;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.pedido-total .monto {
+    display: block;
+    color: #27ae60;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.pedido-estado .badge-completado {
+    display: inline-block;
+    background-color: #27ae60;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Tabla de productos */
+.pedido-productos {
+    padding: 25px;
+}
+
+.pedido-productos table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pedido-productos thead {
+    background-color: #34495e;
+    color: white;
+}
+
+.pedido-productos th {
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.pedido-productos td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #ecf0f1;
+    color: #2c3e50;
+}
+
+.pedido-productos tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.pedido-productos .subtotal {
+    font-weight: bold;
+    color: #27ae60;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pedido-header {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .pedido-total {
+        text-align: left;
+    }
+    
+    .pedido-productos table {
+        font-size: 14px;
+    }
+    
+    .pedido-productos th,
+    .pedido-productos td {
+        padding: 10px 8px;
+    }
+}

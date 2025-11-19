@@ -17,9 +17,13 @@ if (isset($_GET['editar'])) {
     $producto_editar = $conn->query($sql_editar)->fetch_assoc();
 }
 
-// Obtener categoría
+// Obtener categoría actual
 $sql_cat = "SELECT * FROM categorias WHERE id='$id_categoria'";
 $categoria = $conn->query($sql_cat)->fetch_assoc();
+
+// Obtener todas las categorías para sidebar
+$sql_all_cat = "SELECT * FROM categorias ORDER BY nombre";
+$categorias_sidebar = $conn->query($sql_all_cat);
 
 // Obtener productos
 $sql_prod = "SELECT * FROM productos WHERE id_categoria='$id_categoria' ORDER BY id DESC";
@@ -53,23 +57,52 @@ $productos = $conn->query($sql_prod);
         </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.php">Inicio</a></li>
-            <li><a href="productos.php?categoria=1">Teclados</a></li>
-            <li><a href="productos.php?categoria=2">Mouse</a></li>
-            <li><a href="productos.php?categoria=3">Monitores</a></li>
-            <li><a href="productos.php?categoria=4">Audífonos</a></li>
-            <li><a href="productos.php?categoria=5">GPUs</a></li>
-            <li><a href="productos.php?categoria=6">RAM</a></li>
+    <div class="container-principal">
+        <!-- Sidebar de Categorías -->
+        <aside class="sidebar">
+            <h2>Categorías</h2>
+            <ul class="categorias-list">
+                <li>
+                    <a href="index.php" class="categoria-item">
+                        <span class="icono">🏠</span>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <?php while ($cat = $categorias_sidebar->fetch_assoc()): ?>
+                <li>
+                    <a href="productos.php?categoria=<?php echo $cat['id']; ?>" 
+                       class="categoria-item <?php echo $cat['id'] == $id_categoria ? 'active' : ''; ?>">
+                        <span class="icono">📦</span>
+                        <span><?php echo htmlspecialchars($cat['nombre']); ?></span>
+                        <span class="flecha">›</span>
+                    </a>
+                </li>
+                <?php endwhile; ?>
+            </ul>
+            
             <?php if (isLoggedIn() && !isAdmin()): ?>
-                <li><a href="carrito.php" class="carrito-link">🛒 Carrito (<?php echo isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0; ?>)</a></li>
+            <div class="sidebar-carrito">
+                <hr>
+                <a href="carrito.php" class="btn-carrito-sidebar">
+                    🛒 Ver Carrito (<?php echo isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0; ?>)
+                </a>
+            </div>
             <?php endif; ?>
-        </ul>
-    </nav>
+            
+            <?php if (isAdmin()): ?>
+            <div class="sidebar-admin">
+                <hr>
+                <h3>Administración</h3>
+                <a href="admin_categorias.php" class="btn-admin-sidebar">
+                    ⚙️ Gestionar Categorías
+                </a>
+            </div>
+            <?php endif; ?>
+        </aside>
 
-    <div class="container">
-        <h2 class="page-title"><?php echo $categoria['nombre']; ?></h2>
+        <!-- Contenido Principal -->
+        <div class="contenido-principal">
+            <h2 class="page-title"><?php echo $categoria['nombre']; ?></h2>
         
         <!-- Mensajes -->
         <?php if ($error): ?>
@@ -182,6 +215,7 @@ $productos = $conn->query($sql_prod);
             </div>
             <?php endwhile; ?>
         </div>
+    </div>
     </div>
 
     <footer>

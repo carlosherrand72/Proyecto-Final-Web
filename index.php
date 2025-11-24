@@ -30,21 +30,25 @@ $categorias = $conn->query($sql_productos);
       <h1>Hardware Store</h1>
     </div>
     <div class="header-right">
-      <?php if (isLoggedIn()): ?>
-        <span class="user-name">Hola, <?php echo $_SESSION['nombre']; ?></span>
-        <?php if (!isAdmin()): ?>
-          <button class="btn-pedidos" onclick="window.location.href='mis_pedidos.php'">
-            📋 Mis Pedidos
-          </button>
-          <button class="btn-carrito" onclick="window.location.href='carrito.php'">
-            🛒 Carrito (<?php echo isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0; ?>)
-          </button>
-        <?php endif; ?>
-        <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
-      <?php else: ?>
-        <button class="btn-login" onclick="window.location.href='login.php'">Login</button>
-      <?php endif; ?>
-    </div>
+  <?php if (isLoggedIn()): ?>
+    <span class="user-name">Hola, <?php echo $_SESSION['nombre']; ?></span>
+    <?php if (isAdmin()): ?>
+      <button class="btn-dashboard" onclick="window.location.href='dashboard.php'">
+        📊 Dashboard
+      </button>
+    <?php else: ?>
+      <button class="btn-pedidos" onclick="window.location.href='mis_pedidos.php'">
+        📋 Mis Pedidos
+      </button>
+      <button class="btn-carrito" onclick="window.location.href='carrito.php'">
+        🛒 Carrito (<?php echo isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0; ?>)
+      </button>
+    <?php endif; ?>
+    <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
+  <?php else: ?>
+    <button class="btn-login" onclick="window.location.href='login.php'">Login</button>
+  <?php endif; ?>
+</div>
   </header>
 
   <div class="container-principal">

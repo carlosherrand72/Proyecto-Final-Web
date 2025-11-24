@@ -511,3 +511,19 @@ footer {
     justify-content: center;
   }
 }
+
+/* Botón Dashboard (Administrador) */
+.btn-dashboard {
+  background-color: #f39c12;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-dashboard:hover {
+  background-color: #e67e22;
+}

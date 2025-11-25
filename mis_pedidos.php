@@ -28,6 +28,8 @@ $categorias_sidebar = $conn->query($sql_categorias);
     <title>Mis Pedidos - Hardware Store</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/pedidos.css">
+    <link rel="icon" type="image/png" href="Images/LogoPucmm.png">
+
 </head>
 <body>
     <header>

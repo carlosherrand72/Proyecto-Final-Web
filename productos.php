@@ -218,12 +218,61 @@ $productos = $conn->query($sql_prod);
     </div>
     </div>
 
-    <footer>
-        <div class="footer-izquierda">
-            Carlos
-        </div>
-        <div class="footer-derecha">
-            <a href="#">Tarea</a>
+  <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Sobre Nosotros -->
+                <div class="footer-section footer-about">
+                    <h3>Hardware Store</h3>
+                    <p>Tu tienda de confianza para componentes de hardware y accesorios tecnológicos. Ofrecemos los mejores productos al mejor precio.</p>
+                    <p>Calidad garantizada y envío rápido a todo el país.</p>
+                </div>
+                
+                <!-- Enlaces Rápidos -->
+                <div class="footer-section footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.php">Inicio</a></li>
+                        <li><a href="productos.php?categoria=1">Productos</a></li>
+                        <li><a href="mis_pedidos.php">Mis Pedidos</a></li>
+                        <li><a href="carrito.php">Carrito</a></li>
+                        <li><a href="login.php">Mi Cuenta</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Categorías -->
+                <div class="footer-section footer-links">
+                    <h3>Categorías</h3>
+                    <ul>
+                        <li><a href="productos.php?categoria=1">Teclados</a></li>
+                        <li><a href="productos.php?categoria=2">Mouse</a></li>
+                        <li><a href="productos.php?categoria=3">Monitores</a></li>
+                        <li><a href="productos.php?categoria=4">Audífonos</a></li>
+                        <li><a href="productos.php?categoria=5">GPUs</a></li>
+                        <li><a href="productos.php?categoria=6">RAM</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contacto -->
+                <div class="footer-section footer-contact">
+                    <h3>Contáctanos</h3>
+                    <p><span>📍</span> Av. Abraham Lincoln, Santo Domingo, RD</p>
+                    <p><span>📞</span> +1 (809) 555-0100</p>
+                    <p><span>📧</span> info@hardwarestore.com</p>
+                    <p><span>🕐</span> Lun - Vie: 9:00 AM - 6:00 PM</p>
+                    
+                    <div class="footer-social">
+                        <a href="#" class="social-icon" title="Facebook">📘</a>
+                        <a href="#" class="social-icon" title="Instagram">📷</a>
+                        <a href="#" class="social-icon" title="WhatsApp">💬</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hardware Store. Todos los derechos reservados.</p>
+                <p>Desarrollado por <a href="#">Carlos</a> | Proyecto Universitario</p>
+            </div>
         </div>
     </footer>
 </body>

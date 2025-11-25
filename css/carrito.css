@@ -236,3 +236,73 @@
         justify-self: end;
     }
 }
+
+.pago-simulado {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    margin-top: 15px;
+    border: 1px solid #e3e6ef;
+}
+
+.pago-simulado h4 {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.pago-simulado .form-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 3px;
+    display: block;
+}
+
+.pago-simulado .form-control {
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    font-size: 0.9rem;
+}
+
+.pago-simulado .form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.pago-simulado .form-row .col {
+    flex: 1;
+}
+
+#btn-finalizar {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #28a745;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+#btn-finalizar:disabled {
+    background: #b7d8c4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#btn-finalizar:not(:disabled):hover {
+    background: #218838;
+    transform: translateY(-1px);
+}
+
+
+
+
+

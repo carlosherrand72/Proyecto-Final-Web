@@ -1,0 +1,192 @@
+/* Admin Categorías */
+.categoria-mini {
+    display: block;
+    padding: 8px 10px;
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s;
+}
+
+.categoria-mini:hover {
+    background-color: #ecf0f1;
+}
+
+/* Formulario de Categoría */
+.form-categoria {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-categoria .form-group {
+    margin-bottom: 20px;
+}
+
+.form-categoria label {
+    display: block;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-categoria input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.form-categoria input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.form-categoria small {
+    display: block;
+    color: #7f8c8d;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+/* Lista de Categorías */
+.categorias-lista {
+    margin-top: 40px;
+}
+
+.categorias-lista h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+}
+
+.tabla-categorias {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.tabla-categorias table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-categorias thead {
+    background-color: #34495e;
+    color: white;
+}
+
+.tabla-categorias th {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.tabla-categorias td {
+    padding: 15px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.tabla-categorias tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.tabla-categorias tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.nombre-categoria strong {
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+.badge-productos {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Botones en tabla */
+.acciones {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-editar-small,
+.btn-ver-small,
+.btn-eliminar-small {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-editar-small {
+    background-color: #f39c12;
+    color: white;
+}
+
+.btn-editar-small:hover {
+    background-color: #e67e22;
+}
+
+.btn-ver-small {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-ver-small:hover {
+    background-color: #2980b9;
+}
+
+.btn-eliminar-small {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-eliminar-small:hover {
+    background-color: #c0392b;
+}
+
+.btn-eliminar-small:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .tabla-categorias {
+        overflow-x: auto;
+    }
+    
+    .tabla-categorias table {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .acciones {
+        flex-direction: column;
+    }
+    
+    .btn-editar-small,
+    .btn-ver-small,
+    .btn-eliminar-small {
+        width: 100%;
+    }
+}
